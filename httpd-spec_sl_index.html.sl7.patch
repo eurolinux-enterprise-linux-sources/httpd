@@ -1,0 +1,10 @@
+--- httpd.spec.orig	2014-02-27 10:02:28.924367483 -0600
++++ httpd.spec	2014-02-27 10:03:16.428011059 -0600
+@@ -345,6 +345,7 @@ EOF
+ 
+ # Handle contentdir
+ mkdir $RPM_BUILD_ROOT%{contentdir}/noindex
++(cd $RPM_SOURCE_DIR; patch -p1 < httpd-sl_index.html.sl.patch)
+ install -m 644 -p $RPM_SOURCE_DIR/index.html \
+         $RPM_BUILD_ROOT%{contentdir}/noindex/index.html
+ rm -rf %{contentdir}/htdocs
